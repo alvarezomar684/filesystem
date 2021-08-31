@@ -1,3 +1,4 @@
+const app = require("./index");
 const path = require("path");
 const fs = require("fs/promises");
 
@@ -11,7 +12,7 @@ describe("1. Probando la implementación de readFileUsers", () => {
     
         const readFile = jest.spyOn(fs, "readFile");
         
-        index.readFileUsers();
+        app.readFileUsers();
     
         expect(readFile).toHaveBeenCalledTimes(1);
         
@@ -22,7 +23,7 @@ describe("1. Probando la implementación de readFileUsers", () => {
     
         const readFile = jest.spyOn(fs, "readFile");
         
-        index.readFileUsers();
+        app.readFileUsers();
     
         expect(readFile.mock.calls[0][0]).toBe(pathFile);
         
@@ -32,7 +33,7 @@ describe("1. Probando la implementación de readFileUsers", () => {
     
         const readFile = jest.spyOn(fs, "readFile");
         
-        index.readFileUsers();
+        app.readFileUsers();
     
         expect(readFile.mock.calls[0]).toContain('utf8');
     });
@@ -49,7 +50,7 @@ describe("2. Probando la implementación de writeHelloWorld", () => {
     
         const writeFile = jest.spyOn(fs, "writeFile");
         
-        index.writeHelloWorld();
+        app.writeHelloWorld();
     
         expect(writeFile).toHaveBeenCalledTimes(1);
         
@@ -60,7 +61,7 @@ describe("2. Probando la implementación de writeHelloWorld", () => {
     
         const writeFile = jest.spyOn(fs, "writeFile");
         
-        index.writeHelloWorld();
+        app.writeHelloWorld();
     
         expect(writeFile.mock.calls[0][0]).toBe(pathFile);
         
@@ -70,14 +71,14 @@ describe("2. Probando la implementación de writeHelloWorld", () => {
     
         const writeFile = jest.spyOn(fs, "writeFile");
         
-        index.writeHelloWorld();
+        app.writeHelloWorld();
     
         expect(writeFile.mock.calls[0]).toContain('hello world!');
     });
 
 });
 
-describe("3. Probando la implementación de indexUser", () => {
+describe("3. Probando la implementación de appUser", () => {
     afterEach(() => {
         jest.restoreAllMocks();
         jest.resetAllMocks();
@@ -103,7 +104,7 @@ describe("3. Probando la implementación de indexUser", () => {
     
         const readFile = jest.spyOn(fs, "readFile");
         
-        await index.addUser("Academlo");
+        await app.addUser("Academlo");
     
         expect(readFile).toHaveBeenCalledTimes(1);
         
@@ -114,7 +115,7 @@ describe("3. Probando la implementación de indexUser", () => {
     
         const readFile = jest.spyOn(fs, "readFile");
         
-        await index.addUser("Academlo");
+        await app.addUser("Academlo");
     
         expect(readFile.mock.calls[0][0]).toBe(pathFile);
         
@@ -124,7 +125,7 @@ describe("3. Probando la implementación de indexUser", () => {
     
         const writeFile = jest.spyOn(fs, "writeFile");
         
-        await index.addUser("Academlo");
+        await app.addUser("Academlo");
     
         expect(writeFile).toHaveBeenCalledTimes(1);
     });
@@ -142,7 +143,7 @@ describe("3. Probando la implementación de indexUser", () => {
 
         const writeFile = jest.spyOn(fs, "writeFile");
         
-        await index.addUser("Academlo");
+        await app.addUser("Academlo");
     
         expect(writeFile.mock.calls[0][1]).toBe(userlist);
     });
